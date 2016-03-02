@@ -1,8 +1,13 @@
 WebService de CEP
 ----------------
 
-Fa�a a busca de CEP diretamente no site dos correios utilizando phpQuery.
+Pesquisa de CEP diretamente no site dos correios com PHP, jQuery e phpQuery.
 
-1. Fun��o faz em jQuery faz requisi��o ao arquivo cep.php;
-2. cep.php via curl obtem os dados da pagina;
-3. Usando o phpQuery � feito a filtragem dos dados e gerado um retorno em JSON;
+1. A função getEndereco() faz a requisição passando o cep via jQuery o arquivo cep.php;
+2. No arquivo cep.php é feita uma nova requisição a pagina dos correios;
+3. Com os dados obtidos da pagina fazemos a separação dos dados que desejamos isso usando o phpQuery;
+4. Repondemos a requisição inicial com os dados tratados em JSON;
+ 
+
+Uma das vantagem dessa forma é de sempre obter os dados atualizados diretamente da base de CEP dos correios;
+
