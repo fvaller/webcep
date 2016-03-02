@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Webservice CEP</title>
+
+	<!-- Latest compiled and minified CSS & JS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="//code.jquery.com/jquery.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
+
+	<script>
+
+		function getEndereco(){
+			if($.trim($("#cep").val()) != ""){
+				$.getJSON( "./cep.php?cep="+$("#cep").val(), function( json ) {					
+					$(".endereco").val(unescape(json.logradouro));
+					$(".bairro").val(unescape(json.bairro));
+					$(".cidade").val(unescape(json.cidade));
+					$(".uf").val(unescape(json.uf));	 					
+				});			
+			}	
+			return false;		
+		}	
+	</script>
+
+</head>
+<body>
+
+	<div class="container">
+
+		<h1>Busca por CEP</h1>
+		<p>Faça a busca por CEP diretamente no site dos correios utilizando <a href="http://phpquery-library.blogspot.com.br/" target="_blank">phpQuery</a>.</p>
+
+		<div class="row">
+
+			<div class="col-sm-12">
+
+				<div class="panel panel-default">					
+
+					<div class="panel-heading">
+						<h3 class="panel-title">Panel title</h3>
+					</div>
+
+					<div class="panel-body">
+
+						<form action="" method="POST" role="form">			  			
+
+
+							<div class="form-group">
+								<div class="input-group">										
+									<input type="text" class="form-control" id="cep" placeholder="CEP">				
+									<div class="input-group-addon"><a href="javascript:void(0);" onclick="getEndereco()"><span class="glyphicon glyphicon-search"></span></a></div>				
+								</div>
+							</div>
+										
+							<div class="form-group">
+								<label for="">Endereço</label>
+								<input type="text" class="form-control endereco" id="" placeholder="Endereço">
+							</div>
+
+							<div class="form-group">
+								<label for="">Bairro</label>
+								<input type="text" class="form-control bairro" id="" placeholder="Bairro">
+							</div>
+
+							<div class="form-group">
+								<label for="">Cidade</label>
+								<input type="text" class="form-control cidade" id="" placeholder="Cidade">
+							</div>
+
+							<div class="form-group">
+								<label for="">UF</label>
+								<select name="estado" class="form-control uf">
+									<option value=""></option>					  
+									<option value="AC">AC</option>
+									<option value="AL">AL</option>
+									<option value="AM">AM</option>
+									<option value="AP">AP</option>
+									<option value="BA">BA</option>
+									<option value="CE">CE</option>
+									<option value="DF">DF</option>
+									<option value="ES">ES</option>
+									<option value="GO">GO</option>
+									<option value="MA">MA</option>
+									<option value="MG">MG</option>
+									<option value="MS">MS</option>
+									<option value="MT">MT</option>
+									<option value="PA">PA</option>
+									<option value="PB">PB</option>
+									<option value="PE">PE</option>
+									<option value="PI">PI</option>
+									<option value="PR">PR</option>
+									<option value="RJ">RJ</option>
+									<option value="RN">RN</option>
+									<option value="RO">RO</option>
+									<option value="RR">RR</option>
+									<option value="RS">RS</option>
+									<option value="SC">SC</option>
+									<option value="SE">SE</option>
+									<option value="SP">SP</option>
+									<option value="TO">TO</option>
+								</select>
+							</div>			  						  			
+
+
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</form>
+
+
+					</div>
+				</div>				
+
+			</div>
+		</div>
+		<hr>
+		<p class="text-center">fernandovaller.com 2016</p>
+	</div>
+
+</body>
+</html>
